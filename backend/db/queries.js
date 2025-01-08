@@ -9,3 +9,13 @@ export async function createNewUser(username, password){
         }
     })
 }
+
+export async function getUser(username){
+    const user = await prisma.users.findFirst({
+        where:{
+            username
+        }
+    })
+
+    return user;
+}
