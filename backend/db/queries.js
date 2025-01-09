@@ -19,3 +19,52 @@ export async function getUser(username){
 
     return user;
 }
+
+export async function makePost(title, content, authorId){
+    await prisma.post.create({
+        data:{
+            title, content, authorId
+        }
+    })
+}
+
+export async function uploadPost(postId){
+    await prisma.post.update({
+        where:{
+            id: postId
+        },
+        data:{
+            isPublished: true
+        }
+    })
+}
+
+export async function getUploadedPost(id){
+    const post = await prisma.post.findUnique({
+        where:{
+            id,
+            isPublished: true
+        }
+    })
+
+    return post
+}
+
+export async function getPost(id){
+    const post = await prisma.post.findUnique({
+        where:{
+            id,
+        }
+    })
+
+    return post
+}
+
+export async function getAllPosts(){
+    const posts = await prisma.post.findMany({
+        where:{
+            isPublished: true
+        }
+    })
+    return posts
+}
