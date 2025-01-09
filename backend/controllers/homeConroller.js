@@ -1,4 +1,4 @@
-import { makePost, uploadPost, getPost, getAllPosts } from "../db/queries.js"
+import { makePost, uploadPost, getPost, getAllPosts, postComment, getComments } from "../db/queries.js"
 
 export async function getHome(req, res){
     const posts = await getAllPosts();
@@ -18,4 +18,14 @@ export async function uploadPostController(req, res){
 
     await uploadPost(postId)
     res.redirect("/")
+}
+
+export async function postCommentController(req, res){
+    await postComment(req.body.content, parseInt(req.params.postId), req.user.id);
+    res.redirect("/")
+}
+
+export async function getCommentsController(req, res){
+    const comments = await getComments(parseInt(req.params.postId))
+    res.json(comments)
 }

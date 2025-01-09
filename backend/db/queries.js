@@ -68,3 +68,21 @@ export async function getAllPosts(){
     })
     return posts
 }
+
+export async function postComment(content, postId, authorId){
+    await prisma.comment.create({
+        data:{
+            content, authorId, postId
+        }
+    })
+}
+
+export async function getComments(postId){
+    const comments = prisma.comment.findMany({
+        where:{
+            postId
+        }
+    })
+
+    return comments;
+}
