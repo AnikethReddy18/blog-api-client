@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt"
-import { createNewUser, getUser } from "../db/queries.js"
 import jwt from "jsonwebtoken"
+import { createNewUser, getUser } from "../db/queries.js"
 
 export async function signup(req, res){
     const username = req.body.username;

@@ -1,3 +1,4 @@
 import authRouter from "./authRouter.js"
+import homeRouter from "./homeRouter.js"
 
-export default {authRouter}
+export default {authRouter, homeRouter}

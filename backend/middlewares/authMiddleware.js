@@ -7,11 +7,11 @@ export function verifyToken(req, res, next){
         const bearer = bearerHeader.split(' ')
         const token = bearer[1]
 
-        jwt.verify(token, process.env.SECRET_KEY, (err, authData){
+        jwt.verify(token, process.env.SECRET_KEY, (err, authData)=>{
             if(err){
                 res.sendStatus(403);
             }else{
-                req.body.user = authData
+                req.user = authData
                 next()
             }
         })
