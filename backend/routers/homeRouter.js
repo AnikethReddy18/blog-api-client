@@ -4,7 +4,7 @@ import { getHome, newPostController, uploadPostController, postCommentController
 
 const router = Router();
 
-router.get("/", verifyToken, getHome);
+router.get("/", getHome);
 
 router.post("/posts", verifyToken, newPostController);
 router.put("/posts/:postId", verifyToken, uploadPostController);
