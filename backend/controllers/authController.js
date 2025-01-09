@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt"
 import { createNewUser, getUser } from "../db/queries.js"
+import jwt from "jsonwebtoken"
 
 export async function signup(req, res){
     const username = req.body.username;
@@ -20,5 +21,7 @@ export async function login(req, res){
 
     if(!verified) return res.send(401);
     
-    res.send("Sucess")
+    jwt.sign(user, process.env.SECRET_KEY, (err, token)=>{
+        res.json({token})
+    })
 }
