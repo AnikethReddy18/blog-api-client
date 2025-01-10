@@ -44,6 +44,9 @@ export async function getUploadedPost(id){
         where:{
             id,
             isPublished: true
+        },
+        include:{
+            comments
         }
     })
 

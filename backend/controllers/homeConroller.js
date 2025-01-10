@@ -4,9 +4,9 @@ export async function getHome(req, res){
     res.send("Hello World!")
 }
 
-export async function getPostsController(req, res){
-    const posts = await getAllPosts();
-    res.json(posts)
+export async function getPostController(req, res){
+    const post = await getPost();
+    res.json(post)
 }
 
 export async function newPostController(req, res){
