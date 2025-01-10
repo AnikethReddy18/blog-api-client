@@ -20,7 +20,7 @@ function App() {
       {posts ? (
         <div className="posts">
          { posts.map((post, index) =>
-          <Post title={post.title} content={post.content} date={post.date} key={index} />)}
+          <Post title={post.title} content={post.content} date={post.date} id={post.id} key={index} />)}
         </div>
       ) : "Loading Posts"}
     </>

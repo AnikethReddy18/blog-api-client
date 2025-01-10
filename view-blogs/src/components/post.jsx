@@ -1,7 +1,7 @@
 function Post(props) {
     return (
     <div className="post">
-        <h1>{props.title}</h1>
+        <a href={`/${props.id}`}><h1>{props.title}</h1></a>
         <span>{props.date}</span>
         <p>{props.content}</p>
     </div>);
