@@ -7,7 +7,7 @@ const router = Router();
 router.get("/", getHome);
 
 router.get("/posts", getPostsController);
-router.get("/posts/:postId", getPostsController);
+router.get("/posts/:postId", getPostController);
 router.post("/posts", verifyToken, newPostController);
 router.put("/posts/:postId", verifyToken, uploadPostController);
 

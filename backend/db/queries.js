@@ -40,13 +40,13 @@ export async function uploadPost(postId){
 }
 
 export async function getUploadedPost(id){
-    const post = await prisma.post.findUnique({
+    const post = await prisma.post.findFirst({
         where:{
             id,
             isPublished: true
         },
         include:{
-            comments
+            comments: true
         }
     })
 
