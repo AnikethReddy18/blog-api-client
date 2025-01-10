@@ -1,6 +1,10 @@
 import { makePost, uploadPost, getPost, getAllPosts, postComment, getComments } from "../db/queries.js"
 
 export async function getHome(req, res){
+    res.send("Hello World!")
+}
+
+export async function getPostsController(req, res){
     const posts = await getAllPosts();
     res.json(posts)
 }
