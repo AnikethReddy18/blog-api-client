@@ -1,3 +1,5 @@
-.post{
-  border: 2px solid red;
+.posts{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
