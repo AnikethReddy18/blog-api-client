@@ -86,10 +86,12 @@ export async function postComment(content, postId, authorId){
 }
 
 export async function getPostsByUser(userId){
-    await prisma.post.findMany({
+    const posts = await prisma.post.findMany({
         where:{
             authorId: userId
         }
     })
+
+    return posts
 }
 

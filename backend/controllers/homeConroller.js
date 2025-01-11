@@ -43,6 +43,6 @@ export async function getPostsByUserController(req, res){
     const userId = parseInt(req.params.userId);
     if(userId !== req.user.id) return res.sendStatus(403)
 
-    const posts = await getPostsByUsers(userId)
+    const posts = await getPostsByUser(userId);
     res.json(posts)
 }
