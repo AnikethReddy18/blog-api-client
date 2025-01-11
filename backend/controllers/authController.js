@@ -4,10 +4,10 @@ import { createNewUser, getUser } from "../db/queries.js"
 
 export async function signup(req, res){
     const username = req.body.username;
-    const password = await bcrypt.hash(req.body.password, 10);
+   const password = await bcrypt.hash(req.body.password, 10);
     
     await createNewUser(username, password)
-    res.redirect("/login")
+    res.sendStatus(200)
 }
 
 export async function login(req, res){

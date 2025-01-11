@@ -1,4 +1,4 @@
-import { makePost, uploadPost, getPost, getAllPosts, postComment, getUploadedPost } from "../db/queries.js"
+import { makePost, uploadPost, getPost, getAllPosts, postComment, getUploadedPost, getPostsByUser } from "../db/queries.js"
 
 export async function getHome(req, res){
     res.send("Hello World!")
@@ -37,4 +37,12 @@ export async function postCommentController(req, res){
 export async function getCommentsController(req, res){
     const comments = await getComments(parseInt(req.params.postId))
     res.json(comments)
+}
+
+export async function getPostsByUserController(req, res){
+    const userId = parseInt(req.params.userId);
+    if(userId !== req.user.id) return res.sendStatus(403)
+
+    const posts = await getPostsByUsers(userId)
+    res.json(posts)
 }
