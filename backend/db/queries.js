@@ -46,7 +46,11 @@ export async function getUploadedPost(id){
             isPublished: true
         },
         include:{
-            comments: true,
+            comments: {
+                include:{
+                    author: true
+                }
+            },
             author: true
         }
     })
@@ -81,15 +85,3 @@ export async function postComment(content, postId, authorId){
     })
 }
 
-export async function getComments(postId){
-    const comments = prisma.comment.findMany({
-        where:{
-            postId
-        },
-        include:{
-            author: true
-        }
-    })
-
-    return comments;
-}

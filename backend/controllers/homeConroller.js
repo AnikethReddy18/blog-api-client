@@ -1,4 +1,4 @@
-import { makePost, uploadPost, getPost, getAllPosts, postComment, getComments, getUploadedPost } from "../db/queries.js"
+import { makePost, uploadPost, getPost, getAllPosts, postComment, getUploadedPost } from "../db/queries.js"
 
 export async function getHome(req, res){
     res.send("Hello World!")
@@ -10,7 +10,7 @@ export async function getPostsController(req, res){
 }
 
 export async function getPostController(req, res){
-    const post = await getUploadedPost();
+    const post = await getUploadedPost(parseInt(req.params.postId));
     res.json(post)
 }
 
