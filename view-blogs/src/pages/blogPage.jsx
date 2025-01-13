@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Comment from "../components/comment";
+import AddComment from "../components/addComment";
 
 function BlogPage() {
     const {id} = useParams() 
@@ -23,7 +24,7 @@ function BlogPage() {
             <div className="blogPage">
                 <h1>{blog.title}</h1>
                 <h2>{blog.author.username}</h2>
-                <p>{blog.content}</p>
+                <div dangerouslySetInnerHTML={{ __html: blog.content }}></div>
             </div>
 
             <div className="comments">
@@ -31,8 +32,7 @@ function BlogPage() {
                 return <Comment author={comment.author} content={comment.content} key={index} />
             })}
             </div>
-
-            
+            <AddComment postId={blog.id}/>
             </>
         ): "Loading post"}
     </div>)

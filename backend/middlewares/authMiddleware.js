@@ -8,7 +8,7 @@ export function verifyToken(req, res, next){
 
         jwt.verify(token, process.env.SECRET_KEY, (err, authData)=>{
             if(err){
-                res.sendStatus(403);
+                res.sendStatus(403).json({messgae:"Middle aint happy lil bro"});
             }else{
                 req.user = authData
                 next()

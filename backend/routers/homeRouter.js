@@ -7,9 +7,9 @@ const router = Router();
 router.get("/", getHome);
 
 router.get("/posts", getPostsController);
+router.get("/posts/mine", verifyToken, getPostsByUserController);
 router.get("/posts/:postId", getPostController);
 router.post("/posts", verifyToken, newPostController);
-router.get("/:userId/posts", verifyToken, getPostsByUserController);
 router.put("/posts/:postId", verifyToken, uploadPostController);
 
 router.post("/:postId/comments", verifyToken, postCommentController);

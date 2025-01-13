@@ -26,12 +26,12 @@ export async function uploadPostController(req, res){
     if( id !== postId) return res.sendStatus(403)
 
     await uploadPost(postId)
-    res.redirect("/")
+    res.sendStatus(200)
 }
 
 export async function postCommentController(req, res){
     await postComment(req.body.content, parseInt(req.params.postId), req.user.id);
-    res.redirect("/")
+    res.sendStatus(200)
 }
 
 export async function getCommentsController(req, res){
@@ -40,9 +40,6 @@ export async function getCommentsController(req, res){
 }
 
 export async function getPostsByUserController(req, res){
-    const userId = parseInt(req.params.userId);
-    if(userId !== req.user.id) return res.sendStatus(403)
-
-    const posts = await getPostsByUser(userId);
+    const posts = await getPostsByUser(parseInt(req.user.id));
     res.json(posts)
 }
