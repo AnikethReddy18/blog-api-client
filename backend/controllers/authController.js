@@ -1,10 +1,20 @@
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import { createNewUser, getUser } from "../db/queries.js"
+import { body, validationResult } from "express-validator";
 
+export const signupValidators = [
+    body("username").isLength({min: 4}).withMessage("Username should have atleast 4 characters"),
+    body("password").isLength({min: 8}).withMessage("Passoword should have atleast 9 characters")
+]
 export async function signup(req, res){
+    const erros = validationResult(req);
+    if(!erros.isEmpty()){
+        return res.status(400).json({erros: erros.array()})
+    }
+
     const username = req.body.username;
-   const password = await bcrypt.hash(req.body.password, 10);
+    const password = await bcrypt.hash(req.body.password, 10);
     
     await createNewUser(username, password)
     res.sendStatus(200)
