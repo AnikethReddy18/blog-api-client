@@ -17,7 +17,7 @@ function Blog(props) {
     }
 
     return ( 
-    <div >
+    <div className="blog">
         <h1>{props.title}</h1>
         <span>{formatDateTime(props.date)}</span>
         <div dangerouslySetInnerHTML={{ __html: props.content }}></div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 function Login() {
 
@@ -31,11 +31,14 @@ function Login() {
     }
 
     return (
+    <>
     <form onSubmit={login}>
-        <input name="username" type="text" onChange={(e)=>setUsername(e.target.value)}/>
-        <input name="password" type="password"  onChange={(e)=>setPassword(e.target.value)}/>
+        <input name="username" placeholder="username" type="text" onChange={(e)=>setUsername(e.target.value)}/>
+        <input name="password" placeholder="password" type="password"  onChange={(e)=>setPassword(e.target.value)}/>
         <button>login</button>
-    </form>);
+    </form>
+    <Link to="/signup" className="link">Make an Account</Link>
+    </>);
 }
 
 export default Login;

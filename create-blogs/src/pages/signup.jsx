@@ -12,7 +12,7 @@ function Signup() {
     async function signup(e){
         e.preventDefault();
         try{
-             await axios.post("http://localhost:3000/signup", 
+            await axios.post("http://localhost:3000/signup", 
                 { username, password },
                 {
                     headers: {
@@ -20,7 +20,19 @@ function Signup() {
                     }
                 }
             );
-            navigate("/login")
+
+            const response =  await axios.post("http://localhost:3000/login", 
+                { username, password },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+
+            const token = response.data.token
+            localStorage.setItem("token", token);
+            navigate("/")
         }catch(err){
             const erros = err.response.data.erros.map((err)=>err.msg);
             setErros(erros)
@@ -30,10 +42,10 @@ function Signup() {
 
     return (
     <form onSubmit={signup}>
-        <input name="username" type="text" onChange={(e)=>setUsername(e.target.value)}/>
-        <input name="password" type="password"  onChange={(e)=>setPassword(e.target.value)}/>
+   <input name="username" placeholder="username" type="text" onChange={(e)=>setUsername(e.target.value)}/>
+   <input name="password" placeholder="password" type="password"  onChange={(e)=>setPassword(e.target.value)}/>
         <button>Signup</button>
-        {erros && erros.map(err=><div style={{color: "red"}}>{err}</div>)}
+        {erros && erros.map(err=><div className="erros">{err}</div>)}
     </form>);
 }
 

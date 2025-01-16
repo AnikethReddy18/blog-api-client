@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios"
 import Blog from "../component/blog";
 import {useNavigate} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function MyBlogs() {
     const [blogs, setBlogs] = useState(null)
@@ -29,9 +30,11 @@ function MyBlogs() {
 
     return (
         <>
+        <h1>My Blogs</h1>
         {blogs ? (
-            <>{blogs.map((blog, index)=><Blog key={index} id={blog.id} title={blog.title} content={blog.content} date={blog.date} isPublished={blog.isPublished}/>)}</>
+            <div className="blogs">{blogs.map((blog, index)=><Blog key={index} id={blog.id} title={blog.title} content={blog.content} date={blog.date} isPublished={blog.isPublished}/>)}</div>
         ): "Loading"}
+        <Link to="/" className="link">Home</Link>
         </>
     );
 }

@@ -27,11 +27,12 @@ function Write() {
     }
 
     return (
-    <>
-    <input type="text" id="titleInput"/>
+    <div className="writePage">
+    <input type="text" placeholder="Title" id="titleInput"/>
+    <h1 id="contentH1">Content:</h1>
     <Editor value={text} onChange={e=>setText(e.target.value)}/>
-    <button onClick={saveToDraft}>save to draft</button>
-    </> );
+    <button onClick={saveToDraft} id="submitBlogButton">save to draft</button>
+    </div> );
 }
 
 export default Write;
