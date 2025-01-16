@@ -6,6 +6,8 @@ function Signup() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [erros, setErros] = useState(null)
+
     const navigate = useNavigate()
     async function signup(e){
         e.preventDefault();
@@ -20,8 +22,8 @@ function Signup() {
             );
             navigate("/login")
         }catch(err){
-            console.log(err)
-            window.location.reload()
+            const erros = err.response.data.erros.map((err)=>err.msg);
+            setErros(erros)
         }
 
     }
@@ -31,6 +33,7 @@ function Signup() {
         <input name="username" type="text" onChange={(e)=>setUsername(e.target.value)}/>
         <input name="password" type="password"  onChange={(e)=>setPassword(e.target.value)}/>
         <button>Signup</button>
+        {erros && erros.map(err=><div style={{color: "red"}}>{err}</div>)}
     </form>);
 }
 
