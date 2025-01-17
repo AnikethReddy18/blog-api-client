@@ -2,14 +2,15 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Comment from "../components/comment";
 import AddComment from "../components/addComment";
+import apiClient from "../apiClient";
 
 function BlogPage() {
     const {id} = useParams() 
     const [blog, setBlog] = useState(null);
 
     async function getBlog(){
-        const response = await fetch("http://localhost:3000/posts/"+id);
-        const blogObject = await response.json()
+        const response = await apiClient.get("/posts/"+id);
+        const blogObject = await response.body;
         setBlog(blogObject);
     }
 

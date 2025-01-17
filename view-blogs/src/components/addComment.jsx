@@ -1,4 +1,4 @@
-import axios from "axios"
+import apiClient from "../apiClient";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 
@@ -14,7 +14,7 @@ function AddComment(props) {
     }, [])
 
     async function submitComment(){
-        const res = await axios.post("http://localhost:3000/"+ props.postId + "/comments", {
+        const res = await apiClient.post("/"+ props.postId + "/comments", {
             content: document.getElementById("comment").value 
         }, {
             headers: {
