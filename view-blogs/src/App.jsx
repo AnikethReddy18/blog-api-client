@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Post from './components/post'
 import {Link} from "react-router-dom"
+import apiClient from "./apiClient"
 
 function App() {
   const [posts, setPosts] = useState(null)
   const [loggedIn, setLoggedIn] = useState(false);
 
   async function getPosts() {
-    const response = await fetch("http://localhost:3000/posts")
-    const data = await response.json()
+    const response = await apiClient.get("/posts")
+    const data = await response.body
     setPosts(data)
   }
 
