@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Editor from "react-simple-wysiwyg"
-import axios from "axios";
+import apiClient from "../apiClient";
 import {useNavigate} from "react-router-dom"
 
 function Write() {
@@ -15,7 +15,7 @@ function Write() {
 
     async function saveToDraft(){
         const token = localStorage.getItem('token')
-        const response = await axios.post(process.env.URL+"/posts", {title: document.getElementById('titleInput').value, content: text}, {
+        const response = await apiClient.post("/posts", {title: document.getElementById('titleInput').value, content: text}, {
             headers: {
                 Authorization: "Bearer "+ token
             }

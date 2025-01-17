@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios"
+import apiClient from "../apiClient";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
@@ -12,7 +12,7 @@ function Signup() {
     async function signup(e){
         e.preventDefault();
         try{
-            await axios.post("http://localhost:3000/signup", 
+            await apiClient.post("/signup", 
                 { username, password },
                 {
                     headers: {

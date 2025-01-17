@@ -20,7 +20,6 @@ function Login() {
                     }
                 }
             );
-            console.log(response)
 
             const token = response.data.token
             localStorage.setItem("token", token);

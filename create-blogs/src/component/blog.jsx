@@ -1,4 +1,4 @@
-import axios from "axios";
+import apiClient from "../apiClient.js"
 
 function formatDateTime(dateString) {
     const options = { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" };
@@ -7,7 +7,7 @@ function formatDateTime(dateString) {
 
 function Blog(props) {
     async function publish(blogId){
-        const response = await axios.put(process.env.URL+"/posts/"+blogId, {} ,{
+        const response = await apiClient.put("/posts/"+blogId, {} ,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem('token')
         }

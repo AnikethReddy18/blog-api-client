@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios"
+import apiClient from "../apiClient";
 import Blog from "../component/blog";
 import {useNavigate} from "react-router-dom"
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ function MyBlogs() {
     }, [navigate]);
 
     async function getBlogs(){
-        const response = await axios.get(process.env.URL+"/posts/mine", {
+        const response = await apiClient.get("/posts/mine", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token') 
             }
