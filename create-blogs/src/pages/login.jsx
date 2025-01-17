@@ -12,7 +12,7 @@ function Login() {
     async function login(e){
         e.preventDefault();
         try{
-            const response =  await axios.post(import.meta.env.URL +"/login", 
+            const response =  await axios.post(import.meta.env.REACT_URL +"/login", 
                 { username, password },
                 {
                     headers: {
