@@ -21,7 +21,7 @@ function Signup() {
                 }
             );
 
-            const response =  await apiClient.post(process.env.URL+"/login", 
+            const response =  await apiClient.post("/login", 
                 { username, password },
                 {
                     headers: {
