@@ -22,6 +22,8 @@ function Signup() {
                 }
             );
 
+            console.log(apiClient.defaults.baseURL + "/login");
+
             const response =  await apiClient.post("/login", 
                 { username, password },
                 {
