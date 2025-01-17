@@ -151,9 +151,9 @@ form button:hover {
   background: #0056b3;
 }
 
-/* Loading State */
-div:empty:before {
-  content: "Loading...";
-  color: #666;
-  font-style: italic;
+#loginHeader{
+  text-align: center;
+  color: blueviolet;
 }
+
+

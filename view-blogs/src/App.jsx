@@ -18,6 +18,8 @@ function App() {
   }, [])
 
   useEffect(()=>{
+
+    document.title = "View Blogs"
     if(localStorage.getItem('token')){
       setLoggedIn(true)
     }else[

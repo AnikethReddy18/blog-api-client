@@ -28,7 +28,8 @@ function BlogPage() {
             </div>
 
             <div className="comments">
-            {blog.comments.map((comment, index)=>{
+            {blog.comments.length == 0 ?  <>No Comments</>
+            : blog.comments.map((comment, index)=>{
                 return <Comment author={comment.author} content={comment.content} key={index} />
             })}
             </div>

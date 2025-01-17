@@ -5,7 +5,7 @@ function formatDateTime(dateString) {
     return new Date(dateString).toLocaleString(undefined, options);
   }
 
-function getPreview(content, maxLength = 100) {
+function getPreview(content, maxLength = 200) {
     return content.length > maxLength ? content.substring(0, maxLength) + "..." : content;
 }
 

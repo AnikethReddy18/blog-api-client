@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 
 function AddComment(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -24,12 +25,12 @@ function AddComment(props) {
     }
 
     if(!isLoggedIn){
-        return <>Please Log in to comment</>
+        return <Link to='/login'><h1 id="loginHeader">Please Log in to comment</h1></Link>
     }
 
     return (
     <div className="addComment">
-        <textarea name="comment" id="comment"></textarea>
+        <textarea name="comment" id="comment" placeholder="comment"></textarea>
         <button onClick={submitComment}>comment</button>
     </div> );
 }
