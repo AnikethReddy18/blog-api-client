@@ -22,8 +22,7 @@ function Signup() {
                 }
             );
 
-            console.log(apiClient.defaults.baseURL + "/login");
-
+            
             const response =  await apiClient.post("/login", 
                 { username, password },
                 {
@@ -37,7 +36,7 @@ function Signup() {
             localStorage.setItem("token", token);
             navigate("/")
         }catch(err){
-            const erros = err.response.data.erros.map((err)=>err.msg);
+            const erros = err.responsee ? err.response.data.erros.map((err)=>err.msg): null;
             setErros(erros)
         }
 
