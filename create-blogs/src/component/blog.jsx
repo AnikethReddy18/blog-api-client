@@ -7,7 +7,7 @@ function formatDateTime(dateString) {
 
 function Blog(props) {
     async function publish(blogId){
-        const response = await axios.put("http://localhost:3000/posts/"+blogId, {} ,{
+        const response = await axios.put(process.env.URL+"/posts/"+blogId, {} ,{
         headers:{
             Authorization: "Bearer " + localStorage.getItem('token')
         }

@@ -15,7 +15,7 @@ function Write() {
 
     async function saveToDraft(){
         const token = localStorage.getItem('token')
-        const response = await axios.post("http://localhost:3000/posts", {title: document.getElementById('titleInput').value, content: text}, {
+        const response = await axios.post(process.env.URL+"/posts", {title: document.getElementById('titleInput').value, content: text}, {
             headers: {
                 Authorization: "Bearer "+ token
             }

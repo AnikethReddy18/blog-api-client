@@ -15,7 +15,7 @@ function MyBlogs() {
     }, [navigate]);
 
     async function getBlogs(){
-        const response = await axios.get("http://localhost:3000/posts/mine", {
+        const response = await axios.get(process.env.URL+"/posts/mine", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token') 
             }
