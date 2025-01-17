@@ -10,7 +10,7 @@ function App() {
 
   async function getPosts() {
     const response = await apiClient.get("/posts")
-    const data = response.body
+    const data = response.data
     setPosts(data)
   }
 
