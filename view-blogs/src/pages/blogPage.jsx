@@ -10,7 +10,7 @@ function BlogPage() {
 
     async function getBlog(){
         const response = await apiClient.get("/posts/"+id);
-        const blogObject = await response.body;
+        const blogObject = response.data;
         setBlog(blogObject);
     }
 
