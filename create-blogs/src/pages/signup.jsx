@@ -34,8 +34,7 @@ function Signup() {
             localStorage.setItem("token", token);
             navigate("/")
         }catch(err){
-            console.log(err)
-            const erros = err.response.data.erros.map((err)=>err.msg);
+            const erros = err.responsee ? err.response.data.erros.map((err)=>err.msg): null;
             setErros(erros)
         }
 
