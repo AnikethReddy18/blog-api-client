@@ -22,7 +22,7 @@ function Signup() {
                 }
             );
 
-            const response =  await axios.post("http://localhost:3000/login", 
+            const response =  await apiClient.post("/login", 
                 { username, password },
                 {
                     headers: {

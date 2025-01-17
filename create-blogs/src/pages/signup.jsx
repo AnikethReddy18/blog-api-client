@@ -21,7 +21,7 @@ function Signup() {
                 }
             );
 
-            const response =  await axios.post(process.env.URL+"/login", 
+            const response =  await apiClient.post(process.env.URL+"/login", 
                 { username, password },
                 {
                     headers: {
@@ -34,6 +34,7 @@ function Signup() {
             localStorage.setItem("token", token);
             navigate("/")
         }catch(err){
+            console.log(err)
             const erros = err.response.data.erros.map((err)=>err.msg);
             setErros(erros)
         }
@@ -45,7 +46,7 @@ function Signup() {
    <input name="username" placeholder="username" type="text" onChange={(e)=>setUsername(e.target.value)}/>
    <input name="password" placeholder="password" type="password"  onChange={(e)=>setPassword(e.target.value)}/>
         <button>Signup</button>
-        {erros && erros.map(err=><div className="erros">{err}</div>)}
+        {erros && erros.map((err, index)=><div className="erros" key={index}>{err}</div>)}
     </form>);
 }
 

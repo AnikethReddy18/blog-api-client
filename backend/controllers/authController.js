@@ -5,7 +5,7 @@ import { body, validationResult } from "express-validator";
 
 export const signupValidators = [
     body("username").isLength({min: 4}).withMessage("Username should have atleast 4 characters"),
-    body("password").isLength({min: 8}).withMessage("Passoword should have atleast 9 characters")
+    body("password").isLength({min: 8}).withMessage("Passoword should have atleast 8 characters")
 ]
 export async function signup(req, res){
     const erros = validationResult(req);
