@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios"
+import apiClient from "../apiClient";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ function Login() {
     async function login(e){
         e.preventDefault();
         try{
-            const response =  await axios.post(import.meta.env.REACT_URL +"/login", 
+            const response =  await apiClient.post("/login", 
                 { username, password },
                 {
                     headers: {
